@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
 const app = express();
+require('dotenv').config();
 
 app.use(express.json());
 
@@ -14,8 +15,8 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 // Telegram Bot Configuration
-const TELEGRAM_TOKEN = '7775267659:AAEMqfi6p8mqpNp9S3GBCkCQdcbfjP6VSaY'; // Use your Telegram Bot Token
-const TELEGRAM_CHAT_ID = '7522945172'; // Use your Telegram Chat ID
+const TELEGRAM_TOKEN = process.env.TELEGRAM_TOKEN; // Access token from .env file
+const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID; // Access chat ID from .env file
 
 // Validate Telegram credentials at startup
 if (!TELEGRAM_TOKEN || !TELEGRAM_CHAT_ID) {
